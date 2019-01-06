@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Mikrotik Logout Page</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row tbl-info-logout">
+        <div class="col-md-6 col-md-offset-3">
+          <script type="text/javascript">
+          <!--
+            function openLogin() {
+              if (window.name != 'hotspot_logout') return true;
+                open('$(link-login)', '_blank', '');
+                window.close();
+              return false;
+            }
+          //-->
+          </script>
+          <!-- table information logout user -->
+          <h4 class="text-center"><strong>you have just logged out</strong></h4>
+          <table class="table table-bordered table-hover" style="margin-bottom: -10px;">
+            <tbody>
+              <tr>
+                <td>Username</td>
+                <td>$(username)</td>
+              </tr>
+              <tr>
+                <td>IP Address</td>
+                <td>$(ip)</td>
+              </tr>
+              <tr>
+                <td>MAC Address</td>
+                <td>$(mac)</td>
+              </tr>
+              <tr>
+                <td>Session Time</td>
+                <td>$(uptime)</td>
+              </tr>
+              $(if session-time-left)
+              <tr>
+                <td>Time Left</td>
+                <td>$(session-time-left)</td>
+              </tr>
+              $(endif)
+              <tr>
+                <td>bytes up/down</td>
+                <td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- button submit to login -->
+          <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+            <center>
+              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> &nbsp; LOGIN</button>
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <title>Mikrotik Login Page</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="">Mikrotik Login Page - Kelompok 2</a>
+        </div>
+      </div><!-- /.container -->
+    </nav>
+    <!-- END NAVBAR -->
+
+    <!-- CONTENT -->
+    <section>
+      $(if chap-id)
+        <form name="sendin" action="$(link-login-only)" method="post">
+          <input type="hidden" name="username" />
+          <input type="hidden" name="password" />
+          <input type="hidden" name="dst" value="$(link-orig)" />
+          <input type="hidden" name="popup" value="true" />
+        </form>
+        
+        <script type="text/javascript" src="assets/js/md5.js"></script>
+        <script type="text/javascript">
+        <!--
+          function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+          }
+        //-->
+        </script>
+      $(endif)
+
+      <div align="center">
+        <a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)">Latviski</a>
+      </div>
+
+      <div class="container">
+        <div class="panel panel-default col-md-4 col-md-offset-4">
+          <div class="panel-body">
+
+            <div class="notice text-center" style="color: #c1c1c1; font-size: 9px">Please log on to use the internet hotspot service<br />$(if trial == 'yes')Free trial available, <a style="color: #FF8080"href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)</div><br />
+
+            <h1 class="text-center lock-logo"><span class="glyphicon glyphicon-lock"></span></h1>
+            
+            <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+              <input type="hidden" name="dst" value="$(link-orig)" />
+              <input type="hidden" name="popup" value="true" />
+
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                  <input type="text" class="form-control" id="username" placeholder="Input Username Here ..." value="$(username)">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                  <input type="password" class="form-control" id="password" placeholder="Input Password Here ...">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-login">Login</button>
+            </form>
+           
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <p class="text-center" style="color: #c1c1c1">Made with love by Kelompok 2</p>
+            $(if error)<br /><div style="color: #FF8080; font-size: 9px">$(error)</div>$(endif)
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END CONTENT -->
+
+    <script type="text/javascript">
+    <!--
+      document.login.username.focus();
+    //-->
+    </script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

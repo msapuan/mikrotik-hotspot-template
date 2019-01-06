@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	$(if refresh-timeout)
+	<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+	$(endif)
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="-1">
+    <title>Kelompok2 Hotpot > status</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <script language="text/javascript">
+	<!--
+	$(if advert-pending == 'yes')
+	    var popup = '';
+	    function focusAdvert() {
+			if (window.focus) popup.focus();
+	    }
+	    function openAdvert() {
+			popup = open('$(link-advert)', 'hotspot_advert', '');
+			setTimeout("focusAdvert()", 1000);
+	    }
+	$(endif)
+	    function openLogout() {
+		if (window.name != 'hotspot_status') return true;
+	        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+		window.close();
+		return false;
+	    }
+	//-->
+	</script>
+  </head>
+  <body 
+  	bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0"
+	$(if advert-pending == 'yes')
+		onLoad="openAdvert()"
+	$(endif)
+   >
+
+    <div class="container">
+      <div class="row tbl-info-logout">
+        <div class="col-md-6 col-md-offset-3">
+          <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+          	$(if login-by == 'trial')
+          		<h4 class="text-center">Welcome trial user !</h4>
+          	$(elif login-by != 'mac')
+          		<p class="text-center"><strong>Welcome $(username)!</strong></p>
+          	$(endif)
+
+	          <table class="table table-bordered table-hover" style="margin-bottom: -10px;">
+	            <tbody>
+	              <tr>
+	                <td>IP Address</td>
+	                <td>$(ip)</td>
+	              </tr>
+	              <tr>
+	                <td>bytes up/down</td>
+	                <td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+	              </tr>
+	              $(if session-time-left)
+		              <tr>
+		                <td>connected / left</td>
+		                <td>$(mac)</td>
+		              </tr>
+		            $(else)
+		              <tr>
+		                <td>Connected</td>
+		                <td>$(uptime) / $(session-time-left)</td>
+		              </tr>
+		            $(endif)
+								$(if blocked == 'yes')
+		              <tr>
+		                <td>Status</td>
+		                <td><a href="$(link-advert)" target="hotspot_advert">advertisement</a> <span style="color: #ff8080;">required</span></td>
+		              </tr>
+		            $(elif refresh-timeout)
+		              <tr>
+		                <td>Status Refresh</td>
+		                <td>$(refresh-timeout)</td>
+		              </tr>
+	              $(endif)
+	            </tbody>
+	          </table>
+
+	          $(if login-by-mac != 'yes')
+	            <center>
+	              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> &nbsp; LOGIN</button>
+	            </center>
+	          $(endif)
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

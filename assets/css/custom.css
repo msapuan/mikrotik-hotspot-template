@@ -1,0 +1,45 @@
+nav.navbar-default {
+	background-color: #4141f7;
+	border-color: #4141f7;
+	border-radius: 0;
+}
+
+.navbar-header > a.navbar-brand {
+	color: #fff;
+}
+
+.navbar-header > a.navbar-brand:hover {
+	color: #fff;
+}
+
+button.btn-login {
+	width: 100%;
+}
+
+form {
+	padding: 25px;
+}
+
+.panel-default {
+	margin-top: 10px;
+}
+
+h1.lock-logo {
+	font-size: 100px;
+	margin-bottom: -30px;
+	color: #337ab7;
+}
+
+.tbl-info-logout {
+	margin-top: 100px;
+}
+
+h1.info-sign {
+	font-size: 80px;
+	color: #fff;
+}
+
+.redirect-info {
+	background-color: #f0ad4e;
+	margin-top: 15%;
+}
