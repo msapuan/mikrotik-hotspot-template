@@ -1,6 +1,7 @@
 # mikrotik-hotspot-template
 
 - Simple view
-- Clean script with HTML and Javascript
-- Free to edit and share
+- Clean script
+- Build with Bootstrap v3.3.7
+- Free to learn, edit and share
 - Happy coding :-)
